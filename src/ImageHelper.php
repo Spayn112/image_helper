@@ -7,13 +7,6 @@ use Imagine\Image\Point;
 use Imagine\Image\Point\Center;
 use Imagine\Imagick\Imagine;
 
-/**
- * Created by PhpStorm.
- * User: victor
- * Date: 20.02.19
- * Time: 16:47
- */
-
 class ImageHelper
 {
 
