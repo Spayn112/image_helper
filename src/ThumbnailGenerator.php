@@ -27,6 +27,9 @@ class ThumbnailGenerator
     public function getFileUrl($file_url, $thumb_directory, $prefix)
     {
         $ext = pathinfo($file_url)['extension'];
+        if (!file_exists($this->save_path . DIRECTORY_SEPARATOR . $thumb_directory . DIRECTORY_SEPARATOR . $prefix . '.' . $ext)) {
+            return $file_url;
+        }
         return $this->url . '/' . $thumb_directory . '/' . $prefix . '.' . $ext;
     }
 
