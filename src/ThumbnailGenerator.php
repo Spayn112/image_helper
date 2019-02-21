@@ -16,7 +16,7 @@ class ThumbnailGenerator
 
     public function __construct($save_path, $url, array $resolutions = [])
     {
-        $this->save_path = $save_path;
+        $this->save_path = rtrim($save_path, DIRECTORY_SEPARATOR);
         $this->url = $url;
         if ($resolutions) {
             $this->resolutions = $resolutions;
