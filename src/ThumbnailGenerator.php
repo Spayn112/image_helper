@@ -46,6 +46,16 @@ class ThumbnailGenerator
     }
 
 
+    public function deleteThumbnailsDirectory($thumb_directory)
+    {
+        $dir = $this->save_path . DIRECTORY_SEPARATOR . $thumb_directory;
+        if (file_exists($dir)) {
+            return $this->removeDirectory($dir);
+        }
+        return true;
+    }
+
+
     private function generateThumbnail($file, $save_path, $width, $height)
     {
         (new ImageHelper($file))->crop($width, $height)
@@ -68,6 +78,17 @@ class ThumbnailGenerator
             return true;
         }
         return mkdir($directory, 0770, true);
+    }
+
+
+    private function removeDirectory($dir)
+    {
+        if ($objs = glob($dir."/*")) {
+            foreach($objs as $obj) {
+                is_dir($obj) ? $this->removeDirectory($obj) : unlink($obj);
+            }
+        }
+        return rmdir($dir);
     }
 
 
