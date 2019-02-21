@@ -1,7 +1,7 @@
 {
     "name": "spayn/image_helper",
-    "description": "Helps to crop and resize images",
-    "version": "0.0.1",
+    "description": "Helps to crop, resize images and thumbnail generate",
+    "version": "0.0.5",
     "require": {
         "php": ">=7.0.0",
         "imagine/imagine": ">=0.5.0"
