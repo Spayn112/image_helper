@@ -36,8 +36,17 @@ class ImageHelper
         $ratio = $this->getRatio($width, $height);
 
         if ($ratio !== $crop_ratio) {
-            $size_crop = new Box($width, $width * $crop_ratio);
-            $this->image->crop($this->getCenterCrop($size_crop), $size_crop);
+            if ($crop_ratio == 1) {
+                if ($width > $height) {
+                    $size_crop = new Box($height, $height);
+                } else {
+                    $size_crop = new Box($width, $width);
+                }
+                $this->image->crop($this->getCenterCrop($size_crop), $size_crop);
+            } else {
+                $size_crop = new Box($width, $width * $crop_ratio);
+                $this->image->crop($this->getCenterCrop($size_crop), $size_crop);
+            }
         }
 
         return $this;
