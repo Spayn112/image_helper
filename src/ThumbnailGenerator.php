@@ -78,7 +78,7 @@ class ThumbnailGenerator
         if (file_exists($directory)) {
             return true;
         }
-        return mkdir($directory, 0770, true);
+        return mkdir($directory, 0777, true);
     }
 
 
