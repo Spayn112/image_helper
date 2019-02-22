@@ -2,6 +2,10 @@
 
 namespace spayn\ImageHelpers;
 
+use Imagine\Image\Box;
+use Imagine\Image\ManipulatorInterface;
+use Imagine\Imagick\Imagine;
+
 class ThumbnailGenerator
 {
 
@@ -58,9 +62,9 @@ class ThumbnailGenerator
 
     private function generateThumbnail($file, $save_path, $width, $height)
     {
-        (new ImageHelper($file))->crop($width, $height)
-            ->resize($width, $height)
-            ->getImagine()
+        (new Imagine())
+            ->open($file)
+            ->thumbnail(new Box($width, $height), ManipulatorInterface::THUMBNAIL_OUTBOUND)
             ->save($save_path);
     }
 

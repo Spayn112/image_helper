@@ -1,10 +1,10 @@
 {
-    "name": "spayn/image_helper",
-    "description": "Helps to crop, resize images and thumbnail generate",
+    "name": "spayn/thumbnail_generator",
+    "description": "Helps thumbnail generate",
     "version": "0.1.0",
     "require": {
         "php": ">=7.0.0",
-        "imagine/imagine": ">=0.5.0"
+        "imagine/imagine": ">=0.7.1"
     },
     "authors": [
         {
