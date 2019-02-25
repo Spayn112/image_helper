@@ -70,7 +70,7 @@ class ThumbnailGenerator
     public function generate(string $file, string $thumb_directory)
     {
         $ext = pathinfo($file)['extension'];
-        $this->createDirectory($this->save_path . '/' . $thumb_directory);
+        $this->createDirectory($this->save_path . DIRECTORY_SEPARATOR . $thumb_directory);
         foreach ($this->resolutions as $prefix => $resolution) {
             list($width, $height) = explode('x', $resolution);
             $save_path = $this->getThumbnailPath($thumb_directory, $prefix, $ext);
@@ -151,7 +151,7 @@ class ThumbnailGenerator
      */
     private function removeDirectory(string $dir)
     {
-        if ($objs = glob($dir."/*")) {
+        if ($objs = glob($dir . '/*')) {
             foreach($objs as $obj) {
                 is_dir($obj) ? $this->removeDirectory($obj) : unlink($obj);
             }
