@@ -104,7 +104,7 @@ class ThumbnailGenerator
      * @param integer $width
      * @param integer $height
      */
-    private function generateThumbnail(string $file, string $save_path, integer $width, integer $height)
+    private function generateThumbnail(string $file, string $save_path, int $width, int $height)
     {
         (new Imagine())
             ->open($file)
