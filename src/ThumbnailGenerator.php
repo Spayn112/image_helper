@@ -139,7 +139,10 @@ class ThumbnailGenerator
         if (file_exists($directory)) {
             return true;
         }
-        return mkdir($directory, 0777, true);
+        $oldmask = umask(0);
+        $result = mkdir($directory, 0777, true);
+        umask($oldmask);
+        return $result;
     }
 
 
