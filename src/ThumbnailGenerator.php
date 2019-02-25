@@ -110,6 +110,40 @@ class ThumbnailGenerator
             ->open($file)
             ->thumbnail(new Box($width, $height), ManipulatorInterface::THUMBNAIL_OUTBOUND)
             ->save($save_path);
+
+
+        $mime = $this->getMimeType($file);
+
+        if ($mime && $mime == 'image/jpeg') {
+            $this->optimizeJpeg($save_path, 85);
+        }
+    }
+
+
+    private function optimizeJpeg($file, $max_compression = 90)
+    {
+        exec("jpegoptim $file --strip-all --all-progressive -m$max_compression", $out, $code);
+        if ($code === 0) {
+            return true;
+        }
+        return false;
+    }
+
+
+    /**
+     * Get mime type
+     *
+     * @param string $file
+     * @return null|string
+     */
+    private function getMimeType(string $file)
+    {
+        $imagetype = exif_imagetype($file);
+        $mimetype = null;
+        if($imagetype) // check that you have a valid type, but most likely always the case
+            $mimetype = image_type_to_mime_type($imagetype);
+
+        return $mimetype;
     }
 
 

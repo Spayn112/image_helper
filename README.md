@@ -1,4 +1,7 @@
 # Thumbnail Generator
+Requirement:
+jpegoptim
+
 Usage:
 ```php
 use spayn\ImageHelpers\ThumbnailGenerator;
