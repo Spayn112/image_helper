@@ -56,7 +56,8 @@ class ThumbnailGenerator
      */
     public function getFileUrl(string $file_url, string $thumb_directory, string $prefix)
     {
-        $ext = pathinfo($file_url)['extension'];
+//        $ext = pathinfo($file_url)['extension'];
+        $ext = 'jpg';
         return $this->url . '/' . $thumb_directory . '/' . $prefix . '.' . $ext;
     }
 
@@ -69,7 +70,8 @@ class ThumbnailGenerator
      */
     public function generate(string $file, string $thumb_directory)
     {
-        $ext = pathinfo($file)['extension'];
+//        $ext = pathinfo($file)['extension'];
+        $ext = 'jpg';
         $this->createDirectory($this->save_path . DIRECTORY_SEPARATOR . $thumb_directory);
         foreach ($this->resolutions as $prefix => $resolution) {
             list($width, $height) = explode('x', $resolution);
