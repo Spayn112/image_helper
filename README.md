@@ -4,6 +4,9 @@ jpegoptim
 
 Usage:
 ```php
+
+require __DIR__ . '/vendor/autoload.php';
+
 use spayn\ImageHelpers\ThumbnailGenerator;
 
 $thumb_generator = new ThumbnailGenerator(
