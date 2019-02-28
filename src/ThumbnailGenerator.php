@@ -106,7 +106,7 @@ class ThumbnailGenerator
      * @param integer $width
      * @param integer $height
      */
-    private function generateThumbnail(string $file, string $save_path, int $width, int $height)
+    protected function generateThumbnail(string $file, string $save_path, int $width, int $height)
     {
         (new Imagine())
             ->open($file)
@@ -122,7 +122,7 @@ class ThumbnailGenerator
     }
 
 
-    private function optimizeJpeg($file, $max_compression = 90)
+    protected function optimizeJpeg($file, $max_compression = 90)
     {
         exec("jpegoptim $file --strip-all --all-progressive -m$max_compression", $out, $code);
         if ($code === 0) {
@@ -138,7 +138,7 @@ class ThumbnailGenerator
      * @param string $file
      * @return null|string
      */
-    private function getMimeType(string $file)
+    protected function getMimeType(string $file)
     {
         $imagetype = exif_imagetype($file);
         $mimetype = null;
@@ -157,7 +157,7 @@ class ThumbnailGenerator
      * @param string $extension
      * @return string
      */
-    private function getThumbnailPath(string $thumb_directory, string $prefix, string $extension)
+    protected function getThumbnailPath(string $thumb_directory, string $prefix, string $extension)
     {
         $new_filename = "$prefix." . $extension;
         return $this->save_path . DIRECTORY_SEPARATOR . $thumb_directory . DIRECTORY_SEPARATOR . $new_filename;
@@ -170,7 +170,7 @@ class ThumbnailGenerator
      * @param string $directory
      * @return bool
      */
-    private function createDirectory(string $directory)
+    protected function createDirectory(string $directory)
     {
         if (file_exists($directory)) {
             return true;
@@ -188,7 +188,7 @@ class ThumbnailGenerator
      * @param $dir
      * @return bool
      */
-    private function removeDirectory(string $dir)
+    protected function removeDirectory(string $dir)
     {
         if ($objs = glob($dir . '/*')) {
             foreach($objs as $obj) {
