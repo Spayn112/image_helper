@@ -1,7 +1,6 @@
 {
     "name": "spayn/thumbnail_generator",
     "description": "Helps thumbnails generate",
-    "version": "0.1.0",
     "require": {
         "php": "~7.0",
         "imagine/imagine": "^0"
