@@ -170,7 +170,7 @@ class ThumbnailGenerator
      * @param string $directory
      * @return bool
      */
-    protected function createDirectory(string $directory)
+    public function createDirectory(string $directory)
     {
         if (file_exists($directory)) {
             return true;
